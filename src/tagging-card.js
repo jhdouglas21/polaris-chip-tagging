@@ -9,23 +9,46 @@ export class TaggingCard extends LitElement {
     constructor() {
         super();
         this.dragging = null;
+        this.message = "";
+    }
+
+    static get properties() {
+        return {
+            message: { type: String },
+        }
     }
 
     render() {
         return html`
-            <div class="empty" @dragover=${this.dragOver} @dragenter=${this.dragEnter} @dragleave=${this.dragLeave} @drop=${this.dragDrop}>
-                <div class="fill" draggable="true" @dragstart=${this.dragStart} @dragend=${this.dragEnd}></div>
+            <div class="tag-card">
+                <div class="header">
+                    <h2>Tagging</h2>
+                </div>
+                <img class="image" src="https://hax.psu.edu/7d3549e0.png" alt="Image" />
+                <div class="text">
+                    <p>${this.message}</p>
+                </div>
+                <div class="draggable-container">
+                    <div class="draggable-content" draggable="true" @dragstart=${this.dragStart} @dragend=${this.dragEnd}></div>
+                    <div class="draggable-content" draggable="true" @dragstart=${this.dragStart} @dragend=${this.dragEnd}></div>
+                    <div class="draggable-content" draggable="true" @dragstart=${this.dragStart} @dragend=${this.dragEnd}></div>
+                    <div class="draggable-content" draggable="true" @dragstart=${this.dragStart} @dragend=${this.dragEnd}></div>
+                    <div class="draggable-content" draggable="true" @dragstart=${this.dragStart} @dragend=${this.dragEnd}></div>
+                
+                </div>
+
+                <div class="empty-boxes">
+                    <div class="empty" @dragover=${this.dragOver} @dragenter=${this.dragEnter} @dragleave=${this.dragLeave} @drop=${this.dragDrop}></div>
+                    <div class="empty" @dragover=${this.dragOver} @dragenter=${this.dragEnter} @dragleave=${this.dragLeave} @drop=${this.dragDrop}></div>
+                    <div class="empty" @dragover=${this.dragOver} @dragenter=${this.dragEnter} @dragleave=${this.dragLeave} @drop=${this.dragDrop}></div>
+                    <div class="empty" @dragover=${this.dragOver} @dragenter=${this.dragEnter} @dragleave=${this.dragLeave} @drop=${this.dragDrop}></div>
+                    <div class="empty" @dragover=${this.dragOver} @dragenter=${this.dragEnter} @dragleave=${this.dragLeave} @drop=${this.dragDrop}></div>
+                </div>
+
+                <div class="controls">
+                    <button class="submit" >Submit</button>
+                </div>
             </div>
-
-            <div class="empty" @dragover=${this.dragOver} @dragenter=${this.dragEnter} @dragleave=${this.dragLeave} @drop=${this.dragDrop}>
-                <div class="fill" draggable="true" @dragstart=${this.dragStart} @dragend=${this.dragEnd}></div>
-            </div>
-
-            <div class="empty" @dragover=${this.dragOver} @dragenter=${this.dragEnter} @dragleave=${this.dragLeave} @drop=${this.dragDrop}></div>
-
-            <div class="empty" @dragover=${this.dragOver} @dragenter=${this.dragEnter} @dragleave=${this.dragLeave} @drop=${this.dragDrop}></div>
-
-            <div class="empty" @dragover=${this.dragOver} @dragenter=${this.dragEnter} @dragleave=${this.dragLeave} @drop=${this.dragDrop}></div>
         `;
     }
 
@@ -35,25 +58,67 @@ export class TaggingCard extends LitElement {
                 display: block;
             }
 
-            .fill {
+            .controls {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 16px;
+                padding: 10px;
+            }
+
+            .controls button {
+                margin-right: 10px;
+            }
+
+            .submit {
+                background-color: green;
+                color: white; 
+                padding: 10px 20px;
+                border-radius: 5px; 
+                cursor: pointer; 
+            }
+
+            .image {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 50%;
+            }
+
+            .header {
+                color: green;
+                font-size: 250%;
+                text-align: center;
+            }
+
+            .tag-card {
+                background: black;
+            }
+
+            .draggable-container {
+                display: flex;
+                flex-wrap: wrap;
+                margin-bottom: 20px;
+            }
+
+            .draggable-content {
                 background-image: url('https://source.unsplash.com/random/150x150');
-                position: relative;
                 height: 150px;
                 width: 150px;
-                top: 5px;
-                left: 5px;
                 cursor: pointer;
+                margin: 5px;
             }
-            .fill:hover {
+            .draggable-content:hover {
                 outline: 2px solid blue;
             }
 
-            .hold {
-                border: solid 5px #ccc;
+            .empty-boxes {
+                display: flex;
+                flex-wrap: wrap;
             }
 
             .empty {
-                display: inline-block;
                 height: 160px;
                 width: 160px;
                 margin: 10px;
@@ -108,4 +173,6 @@ export class TaggingCard extends LitElement {
 }
 
 globalThis.customElements.define(TaggingCard.tag, TaggingCard);
+
+
 
