@@ -29,19 +29,14 @@ export class TaggingCard extends LitElement {
                     <p>${this.message}</p>
                 </div>
                 <div class="draggable-container">
+                    <div class="draggable-content" draggable="true" @dragstart=${this.dragStart} @dragend=${this.dragEnd}>text</div>
                     <div class="draggable-content" draggable="true" @dragstart=${this.dragStart} @dragend=${this.dragEnd}></div>
                     <div class="draggable-content" draggable="true" @dragstart=${this.dragStart} @dragend=${this.dragEnd}></div>
                     <div class="draggable-content" draggable="true" @dragstart=${this.dragStart} @dragend=${this.dragEnd}></div>
                     <div class="draggable-content" draggable="true" @dragstart=${this.dragStart} @dragend=${this.dragEnd}></div>
-                    <div class="draggable-content" draggable="true" @dragstart=${this.dragStart} @dragend=${this.dragEnd}></div>
-                
                 </div>
 
                 <div class="empty-boxes">
-                    <div class="empty" @dragover=${this.dragOver} @dragenter=${this.dragEnter} @dragleave=${this.dragLeave} @drop=${this.dragDrop}></div>
-                    <div class="empty" @dragover=${this.dragOver} @dragenter=${this.dragEnter} @dragleave=${this.dragLeave} @drop=${this.dragDrop}></div>
-                    <div class="empty" @dragover=${this.dragOver} @dragenter=${this.dragEnter} @dragleave=${this.dragLeave} @drop=${this.dragDrop}></div>
-                    <div class="empty" @dragover=${this.dragOver} @dragenter=${this.dragEnter} @dragleave=${this.dragLeave} @drop=${this.dragDrop}></div>
                     <div class="empty" @dragover=${this.dragOver} @dragenter=${this.dragEnter} @dragleave=${this.dragLeave} @drop=${this.dragDrop}></div>
                 </div>
 
@@ -100,15 +95,18 @@ export class TaggingCard extends LitElement {
                 display: flex;
                 flex-wrap: wrap;
                 margin-bottom: 20px;
+                justify-content: center; /* Align boxes from left to right */
             }
 
             .draggable-content {
-                background-image: url('https://source.unsplash.com/random/150x150');
-                height: 150px;
-                width: 150px;
+                background-color: white;
+                height: 40px;
+                width: 60px;
                 cursor: pointer;
                 margin: 5px;
+                flex: 0 0 auto; /* Allow boxes to shrink and not grow */
             }
+
             .draggable-content:hover {
                 outline: 2px solid blue;
             }
@@ -116,14 +114,19 @@ export class TaggingCard extends LitElement {
             .empty-boxes {
                 display: flex;
                 flex-wrap: wrap;
+                justify-content: center;
             }
 
             .empty {
-                height: 160px;
-                width: 160px;
+                justify-content: center;
+                align-items: center;
+                min-height: 120px; 
+                min-width: 360px;
+                display: inline-flex;
                 margin: 10px;
+                padding: 10px;
                 border: solid 3px salmon;
-                background: white;
+                background: grey;
             }
 
             .hovered {
