@@ -20,6 +20,7 @@
       ]
     },
   
+  
     "haxLogo": {
       "tagOptions": [
         "good form",
@@ -74,82 +75,4 @@
           }
         }
       ]
-    },
-  
-    "buckeye": {
-      "tagOptions": [
-        "puppy",
-        "kitty",
-        "woof",
-        "meow",
-        "adorable",
-        "small",
-        "large",
-        "well-mannered",
-        "ugly",
-        "stinky"
-      ],
-      "tagAnswers": [
-        {
-          "puppy": {
-            "correct": true,
-            "feedback": "He may not be a puppy anymore, but he will always be my puppy!"
-          }
-        },
-        {
-          "kitty": {
-            "correct": false,
-            "feedback": "Use your eyes."
-          }
-        },
-        {
-          "woof": {
-            "correct": true,
-            "feedback": "Woof is the sound a dog makes."
-          }
-        },
-        {
-          "meow": {
-            "correct": false,
-            "feedback": "Meow is the sound a cat makes."
-          }
-        },
-        {
-          "adorable": {
-            "correct": true,
-            "feedback": "Of course he's adorable! Look at him!"
-          }
-        },
-        {
-          "small": {
-            "correct": true,
-            "feedback": "He's reallllllllllllllly small and he won't get any bigger!"
-          }
-        },
-        {
-          "large": {
-            "correct": false,
-            "feedback": "I mean he is a little overweight, but he's not large."
-          }
-        },
-        {
-          "well-mannered": {
-            "correct": true,
-            "feedback": "He is sitting like an established gentleman."
-          }
-        },
-        {
-          "ugly": {
-            "correct": false,
-            "feedback": "HE'S NOT UGLY, YOU'RE UGLY."
-          }
-        },
-        {
-          "stinky": {
-            "correct": false,
-            "feedback": "He gets a bath way too often to be stinky."
-          }
-        }
-      ]
-    }
-  }
+    }}
