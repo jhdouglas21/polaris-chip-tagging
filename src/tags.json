@@ -1,78 +1,80 @@
 {
-    "default": {
-      "tagOptions": [
-        "default btn",
-        "default btn"
-      ],
-      "tagAnswers": [
-        {
-          "default btn - true": {
-            "correct": true,
-            "feedback": "default feedback option true"
-          }
-        },
-        {
-          "default btn - false": {
-            "correct": false,
-            "feedback": "default feedback option false"
-          }
-        }
-      ]
+"default": {
+    "default btn - true": {
+      "correct": true,
+      "feedback": "default feedback option true"
     },
-  
-  
-    "haxLogo": {
-      "tagOptions": [
-        "good form",
-        "poor taste",
-        "contrasting themes",
-        "AI",
-        "shading",
-        "original work",
-        "accessible"
-      ],
-      "tagAnswers": [
-        {
-          "good form": {
-            "correct": true,
-            "feedback": "The shape of the vase clearly demonstrates craftsmanship."
-          }
-        },
-        {
-          "poor taste": {
-            "correct": false,
-            "feedback": "Taste is in the eye of the designer as well as the viewer."
-          }
-        },
-        {
-          "contrasting themes": {
-            "correct": false,
-            "feedback": "There is uniformity in the shape, but there is no depth to this media to imply that it is contrasting with other figures."
-          }
-        },
-        {
-          "AI": {
-            "correct": true,
-            "feedback": "While a modification of prior work, this is still AI generative work."
-          }
-        },
-        {
-          "shading": {
-            "correct": false,
-            "feedback": "While there is a light source and a shadow cast, shading is a term used for pencil based sketching."
-          }
-        },
-        {
-          "original work": {
-            "correct": false,
-            "feedback": "Artwork created from generative AI can not be original since it is trained on other artists' work."
-          }
-        },
-        {
-          "accessible": {
-            "correct": false,
-            "feedback": "The color scheme while high contrast in some areas, loses form in others and has written text unrelated to the character."
-          }
-        }
-      ]
-    }}
+    "default btn - false": {
+      "correct": false,
+      "feedback": "default feedback option false"
+    }
+  },
+    "hax-logo": {
+      "Good form": {
+        "correct": true,
+        "feedback": "Correct - Good Form: The shape of the vase clearly demonstrates craftsmanship."
+      },
+      "Poor taste": {
+        "correct": false,
+        "feedback": "Incorrect - Poor Taste: Taste is in the eye of the designer as well as the viewer."
+      },
+      "Contrasting themes": {
+        "correct": false,
+        "feedback": "Incorrect - Contrasting Themes: There is uniformity in the shape, but there is no depth to this media to imply that it is contrasting with other figures."
+      },
+      "AI": {
+        "correct": true,
+        "feedback": "Correct - AI: While a modification of prior work, this is still AI generative work."
+      },
+      "Shading": {
+        "correct": false,
+        "feedback": "Incorrect - Shading: While there is a light source and a shadow cast, shading is a term used for pencil based sketching."
+      },
+      "Original work": {
+        "correct": false,
+        "feedback": "Incorrect - Original Work: Artwork created from gerenateive AI can not be original since it is trained on other artists work."
+      },
+      "Accessible": {
+        "correct": false,
+        "feedback": "Incorrect - Accessible: The color scheme while high contrast in some areas, loses form in others and has written text unrelated to the character."
+      }
+    },
+    "monkey": {
+      "Has glasses": {
+        "correct": true,
+        "feedback": "Correct - Has glasses: He has a pair of shades on."
+      },
+      "This is a monkey": {
+        "correct": true,
+        "feedback": "Correct - This is a monkey: This is, in fact, a monkey."
+      },
+      "It is wearing a black jacket": {
+        "correct": true,
+        "feedback": "Correct - It is wearing a black jacket: The monkey is wearing a drippy jacket."
+      },
+      "Is wearing a hat": {
+        "correct": false,
+        "feedback": "Incorrect - Is wearing a hat: Is not wearing a hat."
+      },
+      "Wearing pants": {
+        "correct": true,
+        "feedback": "Correct - Wearing a pants: The monkey has jeans on."
+      },
+      "Walking": {
+        "correct": true,
+        "feedback": "Correct - Walking: The monkey is walking, wonder where he's going."
+      },
+      "Contrasting themes": {
+        "correct": false,
+        "feedback": "Incorrect - Contrasting themes: There is uniformity in the shape, but there is no depth to imply that it is contrasting."
+      },
+      "AI": {
+        "correct": false,
+        "feedback": "Incorrect - AI: This video was taken with an iphone camera, so this is not AI generative work."
+      },
+      "Accessible": {
+        "correct": false,
+        "feedback": "Incorrect - Accessible: The color scheme while high contrast in some areas, loses form in others and has written text unrelated to the character."
+      }
+    }
+  }
