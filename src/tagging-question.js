@@ -16,6 +16,7 @@ export class TaggingQuestion extends DDD {
         this.items = {}; 
         this.draggableElements = [];
         this.source = new URL('../src/tags.json', import.meta.url).href;
+        this.answerSet = "default";
     }
 
     static get properties() {
@@ -23,6 +24,7 @@ export class TaggingQuestion extends DDD {
             message: { type: String },
             imageUrl: { type: String },
             question: { type: String },
+            answerSet: { type: String },
         }
     }
 
@@ -39,14 +41,17 @@ export class TaggingQuestion extends DDD {
             }
             const data = await response.json();
             
-            // Flatten nested objects and extract keys (titles)
-            this.items = Object.entries(data)
-                .reduce((acc, [category, items]) => {
-                    Object.entries(items).forEach(([title, details]) => {
+            // Check if the answer set exists in the data
+            if (data.hasOwnProperty(this.answerSet)) {
+                // Flatten nested objects and extract keys (titles) for the specified answer set
+                this.items = Object.entries(data[this.answerSet])
+                    .reduce((acc, [title, details]) => {
                         acc[title] = details;
-                    });
-                    return acc;
-                }, {});
+                        return acc;
+                    }, {});
+            } else {
+                console.error(`Answer set '${this.answerSet}' not found in the data.`);
+            }
     
             this.requestUpdate(); // Trigger render after data is fetched
         } catch (error) {
@@ -153,18 +158,18 @@ export class TaggingQuestion extends DDD {
                 display: flex;
                 flex-wrap: wrap;
                 margin-bottom: 20px;
-                justify-content: center; /* Align boxes from left to right */
+                justify-content: center; 
             }
 
             .draggable-content {
                 background-color: white;
                 cursor: pointer;
                 margin: 5px;
-                flex: 0 0 auto; /* Allow boxes to shrink and not grow */
-                display: inline-block; /* Display boxes inline */
-                padding: 5px 10px; /* Add padding for better readability */
-                border-radius: 5px; /* Add border-radius for rounded corners */
-                white-space: nowrap; /* Allow boxes to shrink and not grow */
+                flex: 0 0 auto; 
+                display: inline-block; 
+                padding: 5px 10px; 
+                border-radius: 5px; 
+                white-space: nowrap; 
             }
 
             .draggable-content:hover {
