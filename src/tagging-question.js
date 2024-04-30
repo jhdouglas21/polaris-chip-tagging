@@ -61,6 +61,7 @@ export class TaggingQuestion extends DDD {
 
     render() {
         return html`
+        <confetti-container id="confetti">
             <div class="tag-question">
                 <div class="header">
                     <h2>Tagging</h2>
@@ -86,6 +87,10 @@ export class TaggingQuestion extends DDD {
                     `)}
                 </div>
 
+                </div>
+                <div class="feedback-container">
+                </div>
+
                 <div class="empty-boxes" @dragover=${this.dragOver} @dragenter=${this.dragEnter} @dragleave=${this.dragLeave} @drop=${this.dragDrop}>
                     <div class="empty"></div>
                 </div>
@@ -95,6 +100,7 @@ export class TaggingQuestion extends DDD {
                     <button class="reset" @click="${this.reset}">Reset</button>
                 </div>
             </div>
+            </confetti-container>
         `;
     }
 
@@ -246,27 +252,62 @@ export class TaggingQuestion extends DDD {
     checkAnswers() {
         const emptyBox = this.shadowRoot.querySelector('.empty');
         const draggableContents = emptyBox.querySelectorAll('.draggable-content');
-        
+        const feedbackContainer = this.shadowRoot.querySelector('.feedback-container');
+        feedbackContainer.innerHTML = ''; // Clear previous feedback
+
+        let allCorrect = true;
+
         draggableContents.forEach(content => {
             const key = content.getAttribute('data-key');
             const item = this.items[key];
             if (item && item.correct) {
                 content.style.backgroundColor = 'green'; // Correct items glow green
+                // Display correct feedback
+                const feedback = document.createElement('p');
+                feedback.textContent = item.feedback;
+                feedback.style.color = 'green'; // Set text color to green for correct feedback
+                feedbackContainer.appendChild(feedback);
             } else {
+                allCorrect = false;
                 content.style.backgroundColor = 'red'; // Incorrect items glow red
+                // Display incorrect feedback
+                const feedback = document.createElement('p');
+                feedback.textContent = item.feedback;
+                feedback.style.color = 'red'; // Set text color to red for incorrect feedback
+                feedbackContainer.appendChild(feedback);
             }
         });
+
+        // If all answers are correct, trigger makeItRain and show alert
+        if (allCorrect) {
+            this.makeItRain();
+            alert("CORRECT");
+        }
     }
 
     reset() {
         const emptyBox = this.shadowRoot.querySelector('.empty');
         const draggableContents = emptyBox.querySelectorAll('.draggable-content');
-        
+
+        // Clear feedback
+        const feedbackContainer = this.shadowRoot.querySelector('.feedback-container');
+        feedbackContainer.innerHTML = '';
+
         draggableContents.forEach(content => {
             content.style.backgroundColor = ''; // Reset background color
             this.shadowRoot.querySelector('.draggable-container').appendChild(content); // Return items to draggable container
         });
     }
+
+    makeItRain() {
+        import("@lrnwebcomponents/multiple-choice/lib/confetti-container.js").then(
+          (module) => {
+            setTimeout(() => {
+              this.shadowRoot.querySelector("#confetti").setAttribute("popped", "");
+            }, 0);
+          }
+        );
+      }
 }
 
 globalThis.customElements.define(TaggingQuestion.tag, TaggingQuestion);
