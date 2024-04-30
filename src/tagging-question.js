@@ -281,7 +281,6 @@ export class TaggingQuestion extends DDD {
         // If all answers are correct, trigger makeItRain and show alert
         if (allCorrect) {
             this.makeItRain();
-            alert("CORRECT");
         }
     }
 
