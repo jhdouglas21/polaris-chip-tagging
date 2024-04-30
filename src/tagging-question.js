@@ -67,10 +67,6 @@ export class TaggingQuestion extends DDD {
                     <h2>Tagging</h2>
                 </div>
                 <img class="image" src=${this.imageUrl} alt="Image"/>
-                <div class="text">
-                    <p>${this.message}</p>
-                </div>
-
                 <details class="description" @toggle="${this.openChanged}">
                     <summary>Description</summary>
                     <h4>${this.question}</h4>
@@ -111,7 +107,7 @@ export class TaggingQuestion extends DDD {
             }
 
             .description {
-                color: white;
+                color: var(--ddd-theme-default-creekTeal);
             }
 
             .controls {
@@ -128,16 +124,16 @@ export class TaggingQuestion extends DDD {
             }
 
             .check {
-                background-color: green;
-                color: white; 
+                background-color: var(--ddd-theme-default-opportunityGreen);
+                color: var(--ddd-theme-default-white); 
                 padding: 10px 20px;
                 border-radius: 5px; 
                 cursor: pointer; 
             }
 
             .reset {
-                background-color: red;
-                color: white; 
+                background-color: var(--ddd-theme-default-original87Pink);
+                color: var(--ddd-theme-default-white); 
                 padding: 10px 20px;
                 border-radius: 5px; 
                 cursor: pointer; 
@@ -151,13 +147,13 @@ export class TaggingQuestion extends DDD {
             }
 
             .header {
-                color: green;
+                color: var(--ddd-theme-default-futureLime);
                 font-size: 250%;
                 text-align: center;
             }
 
             .tag-question {
-                background: black;
+                background: var(--ddd-theme-default-coalyGray);
             }
 
             .draggable-container {
@@ -168,7 +164,7 @@ export class TaggingQuestion extends DDD {
             }
 
             .draggable-content {
-                background-color: white;
+                background-color: var(--ddd-theme-default-athertonViolet);
                 cursor: pointer;
                 margin: 5px;
                 flex: 0 0 auto; 
@@ -179,7 +175,7 @@ export class TaggingQuestion extends DDD {
             }
 
             .draggable-content:hover {
-                outline: 2px solid blue;
+                outline: 2px solid var(--ddd-theme-default-accent);
             }
 
             .empty-boxes {
@@ -196,12 +192,12 @@ export class TaggingQuestion extends DDD {
                 display: inline-flex;
                 margin: 10px;
                 padding: 10px;
-                border: solid 3px salmon;
+                border: solid 3px var(--ddd-theme-default-discoveryCoral);
                 background: grey;
             }
 
             .hovered {
-                background: #f4f4f4;
+                background: var(--ddd-theme-default-roarMaxlight);
                 border-style: dashed;
             }
         `;
