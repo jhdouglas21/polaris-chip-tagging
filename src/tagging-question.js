@@ -280,18 +280,33 @@ export class TaggingQuestion extends DDD {
         }
     }
 
+    shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+    
     reset() {
         const emptyBox = this.shadowRoot.querySelector('.empty');
-        const draggableContents = emptyBox.querySelectorAll('.draggable-content');
-
+        const draggableContents = Array.from(emptyBox.querySelectorAll('.draggable-content'));
+    
+        // Shuffle the draggable contents array
+        const shuffledContents = this.shuffleArray(draggableContents);
+    
         // Clear feedback
         const feedbackContainer = this.shadowRoot.querySelector('.feedback-container');
         feedbackContainer.innerHTML = '';
-
-        draggableContents.forEach(content => {
-            content.style.backgroundColor = ''; // Reset background color
-            this.shadowRoot.querySelector('.draggable-container').appendChild(content); // Return items to draggable container
+    
+        // Reset background color and append shuffled contents to draggable container
+        shuffledContents.forEach(content => {
+            content.style.backgroundColor = '';
+            this.shadowRoot.querySelector('.draggable-container').appendChild(content);
         });
+    
+        // Reset correct notification
+        this.showCorrectNotification = false;
     }
 
     makeItRain() {
