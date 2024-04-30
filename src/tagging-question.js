@@ -38,7 +38,16 @@ export class TaggingQuestion extends DDD {
                 throw new Error('Failed to fetch data');
             }
             const data = await response.json();
-            this.items = data;
+            
+            // Flatten nested objects and extract keys (titles)
+            this.items = Object.entries(data)
+                .reduce((acc, [category, items]) => {
+                    Object.entries(items).forEach(([title, details]) => {
+                        acc[title] = details;
+                    });
+                    return acc;
+                }, {});
+    
             this.requestUpdate(); // Trigger render after data is fetched
         } catch (error) {
             console.error('Error fetching data:', error);
@@ -66,9 +75,9 @@ export class TaggingQuestion extends DDD {
 
                 <div class="draggable-container">
                     ${Object.entries(this.items).map(([key, value]) => html`
-                         <div class="draggable-content" draggable="true" @dragstart="${this.dragStart}" data-key="${key}">
+                        <div class="draggable-content" draggable="true" @dragstart="${this.dragStart}" data-key="${key}">
                             ${key}
-                         </div>
+                        </div>
                     `)}
                 </div>
 
@@ -149,11 +158,13 @@ export class TaggingQuestion extends DDD {
 
             .draggable-content {
                 background-color: white;
-                height: 40px;
-                width: 60px;
                 cursor: pointer;
                 margin: 5px;
                 flex: 0 0 auto; /* Allow boxes to shrink and not grow */
+                display: inline-block; /* Display boxes inline */
+                padding: 5px 10px; /* Add padding for better readability */
+                border-radius: 5px; /* Add border-radius for rounded corners */
+                white-space: nowrap; /* Allow boxes to shrink and not grow */
             }
 
             .draggable-content:hover {
